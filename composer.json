@@ -1,0 +1,15 @@
+{
+  "name": "maxbucknell/php-amdjs",
+  "version": "0.1.0",
+  "description": "JavaScript modules loader using AMD",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Max Bucknell",
+      "email": "me@maxbucknell.com"
+    }
+  ],
+  "require":{
+    "phpunit/phpunit": "*"
+  }
+}
