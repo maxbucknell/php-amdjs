@@ -1,14 +1,7 @@
 <?php
 
-// require 'MaxBucknell/AMDJS/Test/Adapter.php';
-
-namespace MaxBucknell\AMDJS\Test;
-
-require_once 'vendor/autoload.php';
-require_once 'MaxBucknell/AMDJS/Test/Adapter.php';
-require_once 'MaxBucknell/AMDJS/Modules.php';
-
-use MaxBucknell\AMDJS;
+namespace AmdJs;
+use AmdJs\Adapter;
 
 class ModulesTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,10 +9,10 @@ class ModulesTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->adapter = new Adapter();
+        $this->adapter = new Adapter\TestAdapter();
         $path = $this->adapter->getBuiltBaseDir();
         if (!is_dir($path)) {
-            mkdir(realpath('MaxBucknell/AMDJS/Test') . '/dist');
+            mkdir(realpath(__DIR__ . '/..') . '/dist');
         }
     }
 
@@ -53,12 +46,12 @@ class ModulesTest extends \PHPUnit_Framework_TestCase
     {
         $ids = array('foo/bar', 'mine/yours', 'foo/ding');
 
-        $modules = new AMDJS\Modules($this->adapter, $ids);
+        $modules = new Modules($this->adapter, $ids);
         $urls = $modules->getUrls();
 
         foreach ($urls as $url) {
-            $specimen = 'MaxBucknell/AMDJS/Test/specimen/testNoConcatenation' . $url;
-            $actual = 'MaxBucknell/AMDJS/Test' . $url;
+            $specimen = __DIR__ . '/../specimen/testNoConcatenation' . $url;
+            $actual = __DIR__ . '/../' . $url;
 
             $this->assertFileEquals($specimen, $actual, "$url is incorrect.");
         }
@@ -69,13 +62,13 @@ class ModulesTest extends \PHPUnit_Framework_TestCase
         $ids = array('foo/bar', 'mine/yours');
 
         $this->adapter->setConcatenationEnabled(true);
-        $modules = new AMDJS\Modules($this->adapter, $ids);
+        $modules = new Modules($this->adapter, $ids);
 
         $urls = $modules->getUrls();
 
         foreach ($urls as $url) {
-            $specimen = 'MaxBucknell/AMDJS/Test/specimen/testConcatenation' . $url;
-            $actual = 'MaxBucknell/AMDJS/Test' . $url;
+            $specimen = __DIR__ . '/../specimen/testConcatenation' . $url;
+            $actual = __DIR__ . '/../' . $url;
 
             $this->assertFileEquals($specimen, $actual, "$url is incorrect.");
         }
@@ -87,7 +80,7 @@ class ModulesTest extends \PHPUnit_Framework_TestCase
 
         $ids = array('foo/bar', 'mine/yours', 'foo/ding');
 
-        $modules = new AMDJS\Modules($this->adapter, $ids);
+        $modules = new Modules($this->adapter, $ids);
         $urls = $modules->getUrls();
 
         $hash = $this->hash($ids);
@@ -111,12 +104,12 @@ class ModulesTest extends \PHPUnit_Framework_TestCase
 
         $ids = array('foo/ding', 'mine/yours', 'foo/baz');
 
-        $modules = new AMDJS\Modules($this->adapter, $ids);
+        $modules = new Modules($this->adapter, $ids);
         $urls = $modules->getUrls();
 
         foreach ($urls as $url) {
-            $specimen = 'MaxBucknell/AMDJS/Test/specimen/testDefaultModules' . $url;
-            $actual = 'MaxBucknell/AMDJS/Test' . $url;
+            $specimen = __DIR__ . '/../specimen/testDefaultModules' . $url;
+            $actual = __DIR__ . '/../' . $url;
 
             $this->assertFileEquals($specimen, $actual, "$url is incorrect.");
         }
@@ -128,12 +121,12 @@ class ModulesTest extends \PHPUnit_Framework_TestCase
 
         $this->adapter->setAliases(array('dapper' => 'foo/ding'));
 
-        $modules = new AMDJS\Modules($this->adapter, $ids);
+        $modules = new Modules($this->adapter, $ids);
         $urls = $modules->getUrls();
 
         foreach ($urls as $url) {
-            $specimen = 'MaxBucknell/AMDJS/Test/specimen/testAliases' . $url;
-            $actual = 'MaxBucknell/AMDJS/Test' . $url;
+            $specimen = __DIR__ . '/../specimen/testAliases' . $url;
+            $actual = __DIR__ . '/../' . $url;
 
             $this->assertFileEquals($specimen, $actual, "$url is incorrect.");
         }

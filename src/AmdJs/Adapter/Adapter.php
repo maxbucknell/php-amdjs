@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxBucknell\AMDJS;
+namespace AmdJs\Adapter;
 
 interface Adapter
 {

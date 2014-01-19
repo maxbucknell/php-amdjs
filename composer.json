@@ -1,6 +1,6 @@
 {
   "name": "maxbucknell/php-amdjs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "JavaScript modules loader using AMD",
   "license": "MIT",
   "authors": [
@@ -9,7 +9,10 @@
       "email": "me@maxbucknell.com"
     }
   ],
-  "require":{
+  "autoload": {
+        "psr-0": {"AmdJs": "src/"}
+    },
+  "require-dev":{
     "phpunit/phpunit": "*"
   }
 }

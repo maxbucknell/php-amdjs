@@ -1,18 +1,16 @@
 <?php
-namespace MaxBucknell\AMDJS\Test;
+namespace AmdJs\Adapter;
 
-require_once 'MaxBucknell/AMDJS/Adapter.php';
-
-class Adapter implements \MaxBucknell\AMDJS\Adapter
+class TestAdapter implements Adapter
 {
     public function getSourceBaseDir()
     {
-        return realpath('MaxBucknell/AMDJS/Test/source');
+        return realpath(__DIR__  . '/../../source');
     }
 
     public function getBuiltBaseDir()
     {
-        return realpath('MaxBucknell/AMDJS/Test/dist');
+        return realpath(__DIR__  . '/../../dist');
     }
 
     public function getBuiltBaseUrl()

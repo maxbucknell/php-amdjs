@@ -1,15 +1,14 @@
 <?php
 
-namespace MaxBucknell\AMDJS;
+namespace AmdJs;
 
-require_once 'Lib/amd-packager-php/Packager.php';
-require_once 'MaxBucknell/AMDJS/Adapter.php';
+require_once __DIR__ . '/Lib/amd-packager-php/Packager.php';
 
 class Modules
 {
     private $id;
 
-    public function __construct(Adapter $adapter, $ids)
+    public function __construct(Adapter\Adapter $adapter, $ids)
     {
         $this->adapter = $adapter;
         $this->ids = $ids;

@@ -1,7 +1,7 @@
-<phpunit>
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="Tests">
-            <directory>MaxBucknell/AMDJS/Test</directory>
+        <testsuite name="AmdJs Test Suit">
+            <directory>tests/AmdJs</directory>
         </testsuite>
     </testsuites>
 </phpunit>
